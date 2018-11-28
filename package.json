@@ -10,7 +10,7 @@
     "start": "egg-scripts start --daemon --title=egg-server-ts-egg",
     "stop": "egg-scripts stop --title=egg-server-ts-egg",
     "dev": "egg-bin dev -r egg-ts-helper/register",
-    "debug": "egg-bin debug -r egg-ts-helper/register",
+    "debug": "egg-bin debug -r egg-ts-helper/register --workers=1",
     "test-local": "egg-bin test -r egg-ts-helper/register",
     "test": "npm run lint -- --fix && npm run test-local",
     "cov": "egg-bin cov -r egg-ts-helper/register",
@@ -21,8 +21,15 @@
     "clean": "ets clean"
   },
   "dependencies": {
+    "@strange-fish/egg-sequelize-typescript": "^1.0.1",
     "egg": "^2.13.0",
-    "egg-scripts": "^2.6.0"
+    "egg-scripts": "^2.6.0",
+    "egg-sequelize": "^4.2.0",
+    "mysql2": "^1.6.4",
+    "mz-modules": "^2.1.0",
+    "reflect-metadata": "^0.1.12",
+    "sequelize": "^4.41.2",
+    "sequelize-typescript": "^0.6.6"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",

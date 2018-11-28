@@ -6,6 +6,10 @@ const plugin: EggPlugin = {
   //   enable: true,
   //   package: 'egg-view-nunjucks',
   // },
+  sequelizeTypescript: {
+    enable: true,
+    package: '@strange-fish/egg-sequelize-typescript',
+  },
 };
 
 export default plugin;
