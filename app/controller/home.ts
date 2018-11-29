@@ -7,7 +7,6 @@ export default class HomeController extends BaseController {
     ctx.status = 404;
   }
   /**
-   * @description 就是测试而已·
    * @param id
    * @param name
    */

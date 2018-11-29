@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@strange-fish/egg-sequelize-typescript": "^1.0.1",
-    "egg": "^2.13.0",
+    "egg": "^2.14.1",
     "egg-scripts": "^2.6.0",
     "egg-sequelize": "^4.2.0",
     "mysql2": "^1.6.4",
@@ -40,7 +40,7 @@
     "egg-bin": "^4.6.2",
     "egg-ci": "^1.8.0",
     "egg-mock": "^3.16.0",
-    "egg-ts-helper": "^1.14.0",
+    "egg-ts-helper": "^1.15.0",
     "tslib": "^1.9.0",
     "tslint": "^4.0.0",
     "typescript": "^3.1.6"
