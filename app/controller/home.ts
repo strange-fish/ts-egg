@@ -9,6 +9,7 @@ export default class HomeController extends BaseController {
   /**
    * @param id
    * @param name
+   * @description 获取所有玩家
    */
   public async testIndex () {
     const { ctx } = this;
@@ -32,5 +33,22 @@ export default class HomeController extends BaseController {
         msg: '创建用户失败',
       };
     }
+  }
+
+  public async login () {
+    const { ctx } = this;
+    const { userId, password } = ctx.body;
+    const user = await ctx.app.model.User.findById(userId);
+    let rightCode = false;
+    if (user) {
+      rightCode = user.compareCode(password);
+    }
+    ctx.status = rightCode ? 200 : 400;
+    ctx.body = rightCode ? { msg: '登录成功' } : { msg: '密码错误' };
+  }
+
+  public async sendFile () {
+    const { ctx } = this;
+    const { model } = ctx.app;
   }
 }

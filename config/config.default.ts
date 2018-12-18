@@ -15,6 +15,10 @@ export default (appInfo: EggAppInfo) => {
     sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   };
 
+  config.multipart = {
+    mode: 'file',
+  };
+
   config.sequelizeTypescript = {
     dialect: 'mysql',
     database: 'test',
