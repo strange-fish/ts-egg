@@ -1,5 +1,7 @@
+import * as bcrypt from 'bcrypt';
 import { Application } from 'egg';
 import {
+  AllowNull,
   AutoIncrement,
   Column,
   CreatedAt,
@@ -13,7 +15,7 @@ import {
   timestamps: true,
 })
 export default class User extends Model<User> {
-  static app: Application;
+  public static app: Application;
 
   @PrimaryKey
   @AutoIncrement
@@ -23,16 +25,9 @@ export default class User extends Model<User> {
   @Column
   name: string;
 
+  @AllowNull
   @Column
   age: number;
-
-  @Column
-  get password(): string {
-    return this.getDataValue('password');
-  }
-  set password(val: string) {
-    this.setDataValue('password', val);
-  }
 
   @CreatedAt
   createdAt: Date;
@@ -40,11 +35,19 @@ export default class User extends Model<User> {
   @UpdatedAt
   updatedAt: Date;
 
+  @Column
+  private password: string;
+
+  async setPassword (val: string) {
+    const hash = await bcrypt.hash(val, 6);
+    this.setDataValue('password', hash);
+    return true;
+  }
   /**
    * @description hash the code and compare
    * @param code
    */
-  compareCode(code): boolean {
-    return this.password === code;
+  async compareCode(code: string): Promise<boolean> {
+    return await bcrypt.compare(code, this.password);
   }
 }

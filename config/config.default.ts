@@ -19,6 +19,10 @@ export default (appInfo: EggAppInfo) => {
     mode: 'file',
   };
 
+  config.security = {
+    csrf: false,
+  };
+
   config.sequelizeTypescript = {
     dialect: 'mysql',
     database: 'test',
@@ -26,6 +30,7 @@ export default (appInfo: EggAppInfo) => {
     port: 3306,
     username: 'root',
     password: 'myjasmine',
+    sync: { force: true },
   };
 
   // the return config will combines to EggAppConfig

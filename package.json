@@ -18,20 +18,25 @@
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
     "lint": "tslint --project . -c tslint.json",
-    "clean": "ets clean"
+    "clean": "ets clean",
+    "migrate": "ts-node node_modules/.bin/sequelize db:migrate"
   },
   "dependencies": {
     "@strange-fish/egg-sequelize-typescript": "^1.0.3",
+    "bcrypt": "^3.0.2",
     "egg": "^2.14.1",
     "egg-scripts": "^2.6.0",
     "egg-sequelize": "^4.2.0",
     "mysql2": "^1.6.4",
     "mz-modules": "^2.1.0",
+    "patch-package": "^5.1.1",
     "reflect-metadata": "^0.1.12",
     "sequelize": "^4.41.2",
+    "sequelize-cli": "^5.4.0",
     "sequelize-typescript": "^0.6.6"
   },
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.10.2",
     "@types/supertest": "^2.0.0",

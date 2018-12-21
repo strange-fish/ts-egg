@@ -21,9 +21,10 @@ export default class HomeController extends BaseController {
     const { ctx } = this;
     const { model } = ctx.app;
     try {
-      const newUser = new model.Player();
-      newUser.name = 'zzp';
-      newUser.num = 1;
+      const newUser = new model.User();
+      const { body } = ctx.request;
+      newUser.name = body.name;
+      await newUser.setPassword(body.password);
       await newUser.save();
       this.success(newUser);
     } catch (e) {
@@ -41,14 +42,9 @@ export default class HomeController extends BaseController {
     const user = await ctx.app.model.User.findById(userId);
     let rightCode = false;
     if (user) {
-      rightCode = user.compareCode(password);
+      rightCode = await user.compareCode(password);
     }
     ctx.status = rightCode ? 200 : 400;
     ctx.body = rightCode ? { msg: '登录成功' } : { msg: '密码错误' };
-  }
-
-  public async sendFile () {
-    const { ctx } = this;
-    const { model } = ctx.app;
   }
 }
