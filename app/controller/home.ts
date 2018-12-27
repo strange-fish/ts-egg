@@ -6,16 +6,23 @@ export default class HomeController extends BaseController {
     ctx.body = 123;
     ctx.status = 404;
   }
-  /**
-   * @param id
-   * @param name
-   * @description 获取所有玩家
-   */
-  public async testIndex () {
+
+  public async findUserById () {
     const { ctx } = this;
-    const players = await this.ctx.app.model.Player.findAll();
-    ctx.body = players;
-    ctx.status = 200;
+    const { model } = ctx.app;
+
+    const id = ctx.params.userId;
+
+    const user = await model.User.findById(id);
+
+    if (!user) {
+      ctx.status = 404;
+      ctx.body = {
+        msg: '用户不存在',
+      };
+    } else {
+      ctx.body = user;
+    }
   }
   public async createUser () {
     const { ctx } = this;

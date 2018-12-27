@@ -25,6 +25,9 @@ export default class User extends Model<User> {
   @Column
   name: string;
 
+  @Column
+  password: string;
+
   @AllowNull
   @Column
   age: number;
@@ -34,9 +37,6 @@ export default class User extends Model<User> {
 
   @UpdatedAt
   updatedAt: Date;
-
-  @Column
-  private password: string;
 
   async setPassword (val: string) {
     const hash = await bcrypt.hash(val, 6);

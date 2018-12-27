@@ -22,7 +22,7 @@ export default {
       updatedAt: sequelize.DATE,
     });
   },
-  down: async (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+  down: async (queryInterface: QueryInterface) => {
     queryInterface.dropTable('users');
   },
 };

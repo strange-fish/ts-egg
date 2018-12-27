@@ -19,7 +19,7 @@
     "autod": "autod",
     "lint": "tslint --project . -c tslint.json",
     "clean": "ets clean",
-    "migrate": "ts-node node_modules/.bin/sequelize db:migrate"
+    "migrate": "ts-node node_modules/.bin/sequelize"
   },
   "dependencies": {
     "@strange-fish/egg-sequelize-typescript": "^1.0.3",
