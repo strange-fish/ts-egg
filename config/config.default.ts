@@ -33,6 +33,10 @@ export default (appInfo: EggAppInfo) => {
     sync: { force: true },
   };
 
+  config.passport = {
+
+  };
+
   // the return config will combines to EggAppConfig
   return {
     ...config,

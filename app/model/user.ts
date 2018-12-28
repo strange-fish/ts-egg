@@ -8,6 +8,7 @@ import {
   Model,
   PrimaryKey,
   Table,
+  Unique,
   UpdatedAt,
 } from 'sequelize-typescript';
 
@@ -28,9 +29,12 @@ export default class User extends Model<User> {
   @Column
   password: string;
 
-  @AllowNull
+  @Unique
   @Column
-  age: number;
+  mobile: number;
+
+  @Column
+  isActive: boolean;
 
   @CreatedAt
   createdAt: Date;

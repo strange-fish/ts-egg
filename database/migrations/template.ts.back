@@ -1,0 +1,16 @@
+import { QueryInterface, SequelizeStatic } from 'sequelize';
+
+export default {
+  up: async (queryInterface: QueryInterface, sequelize: SequelizeStatic) => {
+    await queryInterface.createTable('', {
+      id: {
+        type: sequelize.INTEGER(11),
+        primaryKey: true,
+        autoIncrement: true,
+      },
+    });
+  },
+  down: async (queryInterface: QueryInterface) => {
+    await queryInterface.dropTable('');
+  },
+};

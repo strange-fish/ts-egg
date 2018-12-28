@@ -2,9 +2,9 @@ import { QueryInterface, SequelizeStatic } from 'sequelize';
 
 export default {
   up: async (queryInterface: QueryInterface, sequelize: SequelizeStatic) => {
-    queryInterface.createTable('users', {
+    await queryInterface.createTable('users', {
       id: {
-        type: sequelize.INTEGER(11),
+        type: sequelize.INTEGER(11).UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
       },
@@ -14,15 +14,14 @@ export default {
       password: {
         type: sequelize.STRING(255),
       },
-      age: {
-        type: sequelize.INTEGER(3),
-        allowNull: true,
+      mobile: {
+        type: sequelize.STRING(16),
       },
-      createdAt: sequelize.DATE,
-      updatedAt: sequelize.DATE,
+      created_at: sequelize.DATE,
+      updated_at: sequelize.DATE,
     });
   },
   down: async (queryInterface: QueryInterface) => {
-    queryInterface.dropTable('users');
+    await queryInterface.dropTable('users');
   },
 };
