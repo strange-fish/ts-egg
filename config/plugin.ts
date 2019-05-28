@@ -14,10 +14,6 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-passport',
   },
-  passortLocal: {
-    enable: true,
-    package: 'egg-passport-local',
-  },
 };
 
 export default plugin;

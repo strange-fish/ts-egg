@@ -1,7 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import { Application } from 'egg';
 import {
-  AllowNull,
   AutoIncrement,
   Column,
   CreatedAt,

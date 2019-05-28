@@ -7,32 +7,14 @@ export default class HomeController extends BaseController {
     ctx.status = 404;
   }
 
-  public async findUserById () {
-    const { ctx } = this;
-    const { model } = ctx.app;
-
-    const id = ctx.params.userId;
-
-    const user = await model.User.findById(id);
-
-    if (!user) {
-      ctx.status = 404;
-      ctx.body = {
-        msg: '用户不存在',
-      };
-    } else {
-      ctx.body = user;
-    }
-  }
   public async createUser () {
     const { ctx } = this;
-    const { model } = ctx.app;
     try {
-      const newUser = new model.User();
-      const { body } = ctx.request;
-      newUser.name = body.name;
-      await newUser.setPassword(body.password);
-      await newUser.save();
+      const newUser = await this.service.authService.createNewUser(
+        ctx.body.name,
+        ctx.body.password,
+      );
+
       this.success(newUser);
     } catch (e) {
       ctx.logger.error('创建用户失败', e);

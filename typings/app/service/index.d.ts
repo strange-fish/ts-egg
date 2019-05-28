@@ -1,11 +1,13 @@
-// This file was auto created by egg-ts-helper
+// This file is created by egg-ts-helper@1.25.3
 // Do not modify this file!!!!!!!!!
 
-import 'egg'; // Make sure ts to import egg declaration at first
-import Test from '../../../app/service/Test';
+import 'egg';
+import ExportAuthService from '../../../app/service/AuthService';
+import ExportTest from '../../../app/service/Test';
 
 declare module 'egg' {
   interface IService {
-    test: Test;
+    authService: ExportAuthService;
+    test: ExportTest;
   }
 }

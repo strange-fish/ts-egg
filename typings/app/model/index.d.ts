@@ -1,15 +1,17 @@
-// This file was auto created by egg-ts-helper
+// This file is created by egg-ts-helper@1.25.3
 // Do not modify this file!!!!!!!!!
 
-import 'egg'; // Make sure ts to import egg declaration at first
-import Category from '../../../app/model/category';
-import Player from '../../../app/model/player';
-import User from '../../../app/model/user';
+import 'egg';
+import ExportAuthorization from '../../../app/model/authorization';
+import ExportCategory from '../../../app/model/category';
+import ExportPlayer from '../../../app/model/player';
+import ExportUser from '../../../app/model/user';
 
 declare module 'egg' {
   interface IModel {
-    Category: typeof Category;
-    Player: typeof Player;
-    User: typeof User;
+    Authorization: typeof ExportAuthorization;
+    Category: typeof ExportCategory;
+    Player: typeof ExportPlayer;
+    User: typeof ExportUser;
   }
 }
