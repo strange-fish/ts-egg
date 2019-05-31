@@ -33,7 +33,7 @@ export default class HomeController extends BaseController {
     if (user) {
       rightCode = await user.compareCode(password);
     }
-    ctx.status = rightCode ? 200 : 400;
+    ctx.status = rightCode ? 200 : 401;
     ctx.body = rightCode ? { msg: '登录成功' } : { msg: '密码错误' };
   }
 }

@@ -34,7 +34,8 @@ export default (appInfo: EggAppInfo) => {
   };
 
   config.passport = {
-
+    enable: true,
+    package: 'egg-passport',
   };
 
   // the return config will combines to EggAppConfig

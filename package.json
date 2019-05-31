@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@strange-fish/egg-sequelize-typescript": "^1.0.3",
+    "@types/passport-http-bearer": "^1.0.33",
     "bcrypt": "^3.0.6",
     "egg": "^2.22.2",
     "egg-passport": "^2.0.1",
@@ -30,6 +31,7 @@
     "egg-sequelize": "^4.3.1",
     "mysql2": "^1.6.5",
     "mz-modules": "^2.1.0",
+    "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0",
     "patch-package": "^5.1.2",
     "reflect-metadata": "^0.1.13",

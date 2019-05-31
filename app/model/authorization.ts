@@ -1,18 +1,26 @@
-import {Column, CreatedAt, Model, PrimaryKey, Table, UpdatedAt} from 'sequelize-typescript';
+import {
+  Column,
+  CreatedAt,
+  DataType,
+  Default,
+  Model,
+  PrimaryKey,
+  Table,
+  UpdatedAt,
+} from 'sequelize-typescript';
 
 @Table
 export default class Authorization extends Model<Authorization> {
   @Column
-  uid: number;
-
-  @Column
   userId: number;
 
+  @Default('local')
   @Column
   provider: string;
 
   @PrimaryKey
-  @Column
+  @Column(DataType.UUID)
+  @Default(DataType.UUIDV1)
   token: string;
 
   @CreatedAt
