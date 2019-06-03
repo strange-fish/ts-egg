@@ -4,13 +4,27 @@ import {
   AutoIncrement,
   Column,
   CreatedAt,
+  DefaultScope,
   Model,
   PrimaryKey,
+  Scopes,
   Table,
   Unique,
   UpdatedAt,
 } from 'sequelize-typescript';
 
+@Scopes({
+  withPassword: {
+    attributes: {
+      exclude: [],
+    },
+  },
+})
+@DefaultScope({
+  attributes: {
+    exclude: ['password'],
+  },
+})
 @Table({
   timestamps: true,
 })
@@ -30,7 +44,7 @@ export default class User extends Model<User> {
 
   @Unique
   @Column
-  mobile: number;
+  mobile: string;
 
   @Column
   isActive: boolean;

@@ -2,21 +2,22 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
+import 'egg-onerror';
+import 'egg-session';
+import 'egg-i18n';
+import 'egg-watcher';
+import 'egg-multipart';
+import 'egg-security';
+import 'egg-development';
+import 'egg-logrotator';
+import 'egg-schedule';
+import 'egg-static';
+import 'egg-jsonp';
+import 'egg-view';
+import '@strange-fish/egg-sequelize-typescript';
+import 'egg-passport';
+import 'egg-validate';
 import { EggPluginItem } from 'egg';
-import './node_modules/@strange-fish/egg-sequelize-typescript';
-import './node_modules/egg-development';
-import './node_modules/egg-i18n';
-import './node_modules/egg-jsonp';
-import './node_modules/egg-logrotator';
-import './node_modules/egg-multipart';
-import './node_modules/egg-onerror';
-import './node_modules/egg-passport';
-import './node_modules/egg-schedule';
-import './node_modules/egg-security';
-import './node_modules/egg-session';
-import './node_modules/egg-static';
-import './node_modules/egg-view';
-import './node_modules/egg-watcher';
 declare module 'egg' {
   interface EggPlugin {
     onerror?: EggPluginItem;
@@ -33,5 +34,6 @@ declare module 'egg' {
     view?: EggPluginItem;
     sequelizeTypescript?: EggPluginItem;
     passport?: EggPluginItem;
+    validate?: EggPluginItem;
   }
 }

@@ -30,12 +30,6 @@ export default (appInfo: EggAppInfo) => {
     port: 3306,
     username: 'root',
     password: 'myjasmine',
-    sync: { force: true },
-  };
-
-  config.passport = {
-    enable: true,
-    package: 'egg-passport',
   };
 
   // the return config will combines to EggAppConfig

@@ -19,8 +19,8 @@ export default class Authorization extends Model<Authorization> {
   provider: string;
 
   @PrimaryKey
-  @Column(DataType.UUID)
   @Default(DataType.UUIDV1)
+  @Column(DataType.UUID)
   token: string;
 
   @CreatedAt
