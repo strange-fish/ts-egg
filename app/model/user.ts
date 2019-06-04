@@ -4,6 +4,8 @@ import {
   AutoIncrement,
   Column,
   CreatedAt,
+  DataType,
+  Default,
   DefaultScope,
   Model,
   PrimaryKey,
@@ -36,16 +38,17 @@ export default class User extends Model<User> {
   @Column
   id: number;
 
-  @Column
+  @Column(DataType.STRING)
   name: string;
 
-  @Column
+  @Column(DataType.STRING)
   password: string;
 
   @Unique
-  @Column
+  @Column(DataType.STRING({ length: 20 }))
   mobile: string;
 
+  @Default(false)
   @Column
   isActive: boolean;
 

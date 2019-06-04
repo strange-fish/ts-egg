@@ -23,6 +23,15 @@ export default (appInfo: EggAppInfo) => {
     csrf: false,
   };
 
+  config.redis = {
+    client: {
+      port: 6379,          // Redis port
+      host: 'localhost',   // Redis host
+      password: 'test',
+      db: 0,
+    },
+  };
+
   config.sequelizeTypescript = {
     dialect: 'mysql',
     database: 'test',

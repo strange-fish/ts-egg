@@ -7,6 +7,7 @@ export default class AuthService extends Service {
     newUser.mobile = mobile;
     await newUser.setPassword(password);
     const resUser = await newUser.save();
+    delete resUser.password;
     return resUser;
   }
 

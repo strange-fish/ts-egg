@@ -24,16 +24,15 @@ export default class AuthController extends BaseController {
   public async register () {
     const { ctx } = this;
     const params = ctx.request.body;
-
     try {
       ctx.validate({
-        name: 'string',
+        username: 'string',
         password: 'string',
-        mobile: 'string | number',
+        mobile: 'string',
       });
 
       const newUser = await this.service.authService.createNewUser(
-        params.name,
+        params.username,
         params.password,
         params.mobile,
       );
@@ -41,10 +40,7 @@ export default class AuthController extends BaseController {
       this.success(newUser);
     } catch (e) {
       ctx.logger.error('创建用户失败', e);
-      ctx.body = {
-        success: 0,
-        msg: '创建用户失败',
-      };
+      this.fail('创建用户失败', e.errors);
     }
   }
 }
