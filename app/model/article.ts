@@ -3,16 +3,18 @@ import {
   BelongsTo,
   Column,
   CreatedAt,
+  DataType,
   Model,
   PrimaryKey,
   Table,
   UpdatedAt,
 } from 'sequelize-typescript';
+import User from './user';
 
 @Table({
   timestamps: true,
 })
-export default class Category extends Model<Category> {
+export default class Article extends Model<Article> {
   static app: Application;
 
   @PrimaryKey
@@ -20,16 +22,19 @@ export default class Category extends Model<Category> {
   id: number;
 
   @Column
-  name: string;
+  title: string;
+
+  @Column(DataType.TEXT)
+  content: string;
 
   @Column
-  level: number;
+  userId: number;
+
+  @BelongsTo(() => User, 'userId')
+  user: User;
 
   @Column
-  parentId: number;
-
-  @BelongsTo(() => Category, 'parentId')
-  parentCategory: Category;
+  readCount: number;
 
   @CreatedAt
   createdAt: Date;
