@@ -17,6 +17,8 @@ import 'egg-view';
 import '@strange-fish/egg-sequelize-typescript';
 import 'egg-passport';
 import 'egg-validate';
+import 'egg-redis';
+import 'egg-router-plus';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -35,5 +37,7 @@ declare module 'egg' {
     sequelizeTypescript?: EggPluginItem;
     passport?: EggPluginItem;
     validate?: EggPluginItem;
+    redis?: EggPluginItem;
+    routerPlus?: EggPluginItem;
   }
 }

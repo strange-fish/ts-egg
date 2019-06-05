@@ -1,7 +1,7 @@
 import BaseController from './baseController';
 
 export default class AuthController extends BaseController {
-  async login () {
+  public async login () {
     const { ctx } = this;
     const param = ctx.request.body;
 
@@ -42,5 +42,14 @@ export default class AuthController extends BaseController {
       ctx.logger.error('创建用户失败', e);
       this.fail('创建用户失败', e.errors);
     }
+  }
+
+  /**
+   * logout
+   */
+  public async logout() {
+    const { ctx } = this;
+    await this.service.authService.deleteAuth(ctx.user.id);
+    this.success('');
   }
 }

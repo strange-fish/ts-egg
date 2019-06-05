@@ -22,6 +22,13 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-redis',
   },
+  routerPlus: {
+    enable: true,
+    package: 'egg-router-plus',
+  },
+  session: {
+    enable: false,
+  },
 };
 
 export default plugin;

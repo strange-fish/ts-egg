@@ -12,6 +12,7 @@ export default class AuthService extends Service {
   }
 
   async createAuthorization (userId: number) {
+    await this.deleteAuth(userId);
     const auth = new this.app.model.Authorization();
     auth.userId = userId;
     const savedAuth = await auth.save();
@@ -31,5 +32,11 @@ export default class AuthService extends Service {
     } else {
       throw Error(`user doesn't exist!`);
     }
+  }
+
+  async deleteAuth (userId: number) {
+    return this.app.model.Authorization.destroy({ where: {
+      userId,
+    }});
   }
 }
