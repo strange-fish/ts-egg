@@ -6,26 +6,26 @@ import {
   Model,
   PrimaryKey,
   Table,
-  UpdatedAt,
-} from 'sequelize-typescript';
+  UpdatedAt
+} from 'sequelize-typescript'
 
 @Table
 export default class Authorization extends Model<Authorization> {
   @Column
-  userId: number;
+  userId: number
 
   @Default('local')
   @Column
-  provider: string;
+  provider: string
 
   @PrimaryKey
   @Default(DataType.UUIDV1)
   @Column(DataType.UUID)
-  token: string;
+  token: string
 
   @CreatedAt
-  createAt: Date;
+  createAt: Date
 
   @UpdatedAt
-  updateAt: Date;
+  updateAt: Date
 }

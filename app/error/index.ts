@@ -1,3 +1,6 @@
+/**
+ * 可控的error
+ */
 export class HandledError extends Error {
   type = 'HandledError'
   errors: any

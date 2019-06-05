@@ -1,5 +1,5 @@
-import * as bcrypt from 'bcrypt';
-import { Application } from 'egg';
+import * as bcrypt from 'bcrypt'
+import { Application } from 'egg'
 import {
   AutoIncrement,
   Column,
@@ -12,62 +12,62 @@ import {
   Scopes,
   Table,
   Unique,
-  UpdatedAt,
-} from 'sequelize-typescript';
+  UpdatedAt
+} from 'sequelize-typescript'
 
 @Scopes({
   withPassword: {
     attributes: {
-      exclude: [],
-    },
-  },
+      exclude: []
+    }
+  }
 })
 @DefaultScope({
   attributes: {
-    exclude: ['password'],
-  },
+    exclude: ['password']
+  }
 })
 @Table({
-  timestamps: true,
+  timestamps: true
 })
 export default class User extends Model<User> {
-  public static app: Application;
+  public static app: Application
 
   @PrimaryKey
   @AutoIncrement
   @Column
-  id: number;
+  id: number
 
   @Column(DataType.STRING)
-  name: string;
+  name: string
 
   @Column(DataType.STRING)
-  password: string;
+  password: string
 
   @Unique
   @Column(DataType.STRING({ length: 20 }))
-  mobile: string;
+  mobile: string
 
   @Default(false)
   @Column
-  isActive: boolean;
+  isActive: boolean
 
   @CreatedAt
-  createdAt: Date;
+  createdAt: Date
 
   @UpdatedAt
-  updatedAt: Date;
+  updatedAt: Date
 
   async setPassword (val: string) {
-    const hash = await bcrypt.hash(val, 6);
-    this.setDataValue('password', hash);
-    return true;
+    const hash = await bcrypt.hash(val, 6)
+    this.setDataValue('password', hash)
+    return true
   }
   /**
    * @description hash the code and compare
    * @param code
    */
-  async compareCode(code: string): Promise<boolean> {
-    return await bcrypt.compare(code, this.password);
+  async compareCode (code: string): Promise<boolean> {
+    return await bcrypt.compare(code, this.password)
   }
 }

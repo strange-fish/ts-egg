@@ -8,7 +8,7 @@ export default (app: Application) => {
     session: false,
     successReturnToOrRedirect: null
   })
-  // app.model.sync({ alter: true });
+  // app.model.sync({ alter: true })
 
   router.get('/', controller.home.index)
 
@@ -18,5 +18,6 @@ export default (app: Application) => {
   apiRouter.post('/v1/register', controller.auth.register)
   apiRouter.post('/v1/logout', bearer, controller.auth.logout)
 
-  // const guardRouter = app.router.namespace('/api', bearer);
+  const guardRouter = app.router.namespace('/api', bearer)
+  guardRouter.resources('article', '/v1/article', controller.article)
 }

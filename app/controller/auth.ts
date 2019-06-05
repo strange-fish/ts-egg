@@ -5,20 +5,15 @@ export default class AuthController extends BaseController {
     const { ctx } = this
     const param = ctx.request.body
 
-    try {
-      ctx.validate({
-        mobile: 'string',
-        password: 'string'
-      }, param)
-
-      const token = await ctx.service.authService.loginByPassword(
+    ctx.validate({
+      mobile: 'string',
+      password: 'string'
+    }, param)
+    const token = await ctx.service.authService.loginByPassword(
         param.mobile,
         param.password
       )
-      this.success({ token })
-    } catch (err) {
-      this.fail(err.message, err.errors)
-    }
+    this.success({ token })
   }
 
   public async register () {

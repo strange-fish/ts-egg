@@ -1,4 +1,5 @@
 import { Controller } from 'egg'
+import { IFindOptions } from 'sequelize-typescript'
 
 export default class BaseController extends Controller {
   protected success (data: any) {
@@ -15,6 +16,31 @@ export default class BaseController extends Controller {
       success: 0,
       msg,
       errors
+    }
+  }
+
+  protected async paginate<T> (name: string, options?: IFindOptions<T>) {
+    const params = this.ctx.query
+    this.ctx.validate({
+      page: { type: 'int', required: false, default: 1 },
+      size: { type: 'int', required: false, default: 10 }
+    }, params)
+
+    const res = await this.app.model[name].findAndCountAll({
+      ...options,
+      limit: params.size,
+      offset: params.size * params.page
+    })
+
+    this.ctx.body = {
+      success: 1,
+      data: res.rows,
+      pageInfo: {
+        size: params.size,
+        page: params.page,
+        total: res.count,
+        hasMore: res.count > (params.size * params.page)
+      }
     }
   }
 }

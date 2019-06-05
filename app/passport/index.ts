@@ -5,9 +5,9 @@ export default (app: Application) => {
   // @ts-ignore
   app.passport.use(new BearerStrategy(async (token, done) => {
     try {
-      const auth = await app.model.Authorization.findById(token)
+      const auth = await app.model.Authorization.findByPk(token)
       if (auth) {
-        const user = await app.model.User.findById(auth.userId)
+        const user = await app.model.User.findByPk(auth.userId)
         if (user) {
           return done(null, user, { scope: 'all', message: 'auth' })
         }

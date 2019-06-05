@@ -5,6 +5,7 @@ import 'egg';
 import ExportArticle from '../../../app/model/article';
 import ExportAuthorization from '../../../app/model/authorization';
 import ExportCategory from '../../../app/model/category';
+import ExportComment from '../../../app/model/comment';
 import ExportUser from '../../../app/model/user';
 
 declare module 'egg' {
@@ -12,6 +13,7 @@ declare module 'egg' {
     Article: typeof ExportArticle;
     Authorization: typeof ExportAuthorization;
     Category: typeof ExportCategory;
+    Comment: typeof ExportComment;
     User: typeof ExportUser;
   }
 }

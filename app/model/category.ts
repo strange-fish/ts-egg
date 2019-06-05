@@ -1,4 +1,4 @@
-import { Application } from 'egg';
+import { Application } from 'egg'
 import {
   BelongsTo,
   Column,
@@ -7,33 +7,35 @@ import {
   PrimaryKey,
   Table,
   UpdatedAt,
-} from 'sequelize-typescript';
+  AutoIncrement
+} from 'sequelize-typescript'
 
 @Table({
-  timestamps: true,
+  timestamps: true
 })
 export default class Category extends Model<Category> {
-  static app: Application;
+  static app: Application
 
   @PrimaryKey
+  @AutoIncrement
   @Column
-  id: number;
+  id: number
 
   @Column
-  name: string;
+  name: string
 
   @Column
-  level: number;
+  level: number
 
   @Column
-  parentId: number;
+  parentId: number
 
   @BelongsTo(() => Category, 'parentId')
-  parentCategory: Category;
+  parentCategory: Category
 
   @CreatedAt
-  createdAt: Date;
+  createdAt: Date
 
   @UpdatedAt
-  updatedAt: Date;
+  updatedAt: Date
 }

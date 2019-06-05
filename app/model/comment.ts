@@ -11,18 +11,16 @@ import {
   AutoIncrement
 } from 'sequelize-typescript'
 import User from './user'
+import Article from './article'
 
 @Table
-export default class Article extends Model<Article> {
+export default class Comment extends Model<Comment> {
   static app: Application
 
   @PrimaryKey
   @AutoIncrement
   @Column
   id: number
-
-  @Column
-  title: string
 
   @Column(DataType.TEXT)
   content: string
@@ -31,7 +29,13 @@ export default class Article extends Model<Article> {
   authorId: number
 
   @BelongsTo(() => User, 'authorId')
-  author: User
+  user: User
+
+  @Column
+  articleId: number
+
+  @BelongsTo(() => Article, 'articleId')
+  article: Article
 
   @Column
   readCount: number
