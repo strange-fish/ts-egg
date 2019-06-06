@@ -5,20 +5,19 @@ import {
   CreatedAt,
   DataType,
   Model,
-  PrimaryKey,
   Table,
   UpdatedAt,
-  AutoIncrement
+  Default,
+  HasMany
 } from 'sequelize-typescript'
 import User from './user'
+import Comment from './comment'
 
 @Table
 export default class Article extends Model<Article> {
   static app: Application
 
-  @PrimaryKey
-  @AutoIncrement
-  @Column
+  @Column({ primaryKey: true, autoIncrement: true })
   id: number
 
   @Column
@@ -33,8 +32,12 @@ export default class Article extends Model<Article> {
   @BelongsTo(() => User, 'authorId')
   author: User
 
+  @Default(0)
   @Column
   readCount: number
+
+  @HasMany(() => Comment, 'articleId')
+  comments?: Comment[]
 
   @CreatedAt
   createdAt: Date

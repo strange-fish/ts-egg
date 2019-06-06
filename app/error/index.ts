@@ -6,7 +6,7 @@ export class HandledError extends Error {
   errors: any
   status: number
 
-  constructor (message, errors?: any, status: number = 400) {
+  constructor (message, status: number = 400, errors?: any) {
     super(message)
     this.status = status
     this.errors = errors

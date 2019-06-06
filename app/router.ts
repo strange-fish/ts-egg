@@ -8,7 +8,7 @@ export default (app: Application) => {
     session: false,
     successReturnToOrRedirect: null
   })
-  // app.model.sync({ alter: true })
+  // app.model.sync({ force: true })
 
   router.get('/', controller.home.index)
 

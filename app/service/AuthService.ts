@@ -5,15 +5,16 @@ export default class AuthService extends Service {
   async createNewUser (name: string, password: string, mobile: string) {
     const User = this.app.model.User
 
-    const newUser = new User()
-    newUser.name = name
-    newUser.mobile = mobile
-    await newUser.setPassword(password)
-
     const [resUser, created] = await User.findOrCreate({
       where: { mobile },
-      defaults: newUser
+      defaults: {
+        mobile,
+        name,
+        password: await User.hashPassword(password)
+      }
     })
+
+    delete resUser.password
 
     if (!created) {
       throw new HandledError('mobile already exist!')

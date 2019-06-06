@@ -63,6 +63,10 @@ export default class User extends Model<User> {
     this.setDataValue('password', hash)
     return true
   }
+
+  static hashPassword (val: string) {
+    return bcrypt.hash(val, 6)
+  }
   /**
    * @description hash the code and compare
    * @param code
