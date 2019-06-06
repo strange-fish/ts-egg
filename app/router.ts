@@ -13,11 +13,11 @@ export default (app: Application) => {
   router.get('/', controller.home.index)
 
   const apiRouter = app.router.namespace('/api')
+  const guardRouter = app.router.namespace('/api', bearer)
   // auth
   apiRouter.post('/v1/login', controller.auth.login)
   apiRouter.post('/v1/register', controller.auth.register)
-  apiRouter.post('/v1/logout', bearer, controller.auth.logout)
-
-  const guardRouter = app.router.namespace('/api', bearer)
+  guardRouter.post('/v1/logout', controller.auth.logout)
+  // article
   guardRouter.resources('article', '/v1/article', controller.article)
 }

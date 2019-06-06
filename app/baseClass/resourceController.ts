@@ -16,6 +16,19 @@ export default abstract class ResourceController extends BaseController {
     this.success(res)
   }
 
+  async show () {
+    const params = this.ctx.params
+    this.ctx.validate({
+      id: 'int'
+    }, params)
+
+    const res = await this.app.model[this.modelName].findByPK(params.id)
+
+    return this.success(res)
+  }
+
+  update? (): void
+
   async destroy () {
     const params = this.ctx.params
     this.ctx.validate({
