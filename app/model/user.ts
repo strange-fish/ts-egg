@@ -16,20 +16,14 @@ import {
 } from 'sequelize-typescript'
 
 @Scopes({
-  withPassword: {
-    attributes: {
-      exclude: []
-    }
-  }
+  withPassword: {}
 })
 @DefaultScope({
   attributes: {
     exclude: ['password']
   }
 })
-@Table({
-  timestamps: true
-})
+@Table
 export default class User extends Model<User> {
   public static app: Application
 

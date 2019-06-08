@@ -42,7 +42,7 @@ export default (appInfo: EggAppInfo) => {
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: 'myjasmine'
+    password: '123456'
   }
 
   // the return config will combines to EggAppConfig

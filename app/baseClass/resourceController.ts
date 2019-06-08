@@ -9,6 +9,7 @@ export default abstract class ResourceController extends BaseController {
   index () {
     return this.paginate(this.modelName)
   }
+
   async create () {
     const newEntity = new this.app.model[this.modelName]()
     Object.assign(newEntity, this.ctx.body)

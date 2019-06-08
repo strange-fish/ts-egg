@@ -9,6 +9,10 @@ import ExportComment from '../../../app/model/comment';
 import ExportUser from '../../../app/model/user';
 
 declare module 'egg' {
+  interface Application {
+    model: IModel;
+  }
+
   interface IModel {
     Article: typeof ExportArticle;
     Authorization: typeof ExportAuthorization;

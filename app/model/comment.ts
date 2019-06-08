@@ -8,7 +8,8 @@ import {
   PrimaryKey,
   Table,
   UpdatedAt,
-  AutoIncrement
+  AutoIncrement,
+  Default
 } from 'sequelize-typescript'
 import User from './user'
 import Article from './article'
@@ -29,7 +30,7 @@ export default class Comment extends Model<Comment> {
   authorId: number
 
   @BelongsTo(() => User, 'authorId')
-  user: User
+  author: User
 
   @Column
   articleId: number
@@ -37,6 +38,7 @@ export default class Comment extends Model<Comment> {
   @BelongsTo(() => Article, 'articleId')
   article: Article
 
+  @Default(0)
   @Column
   readCount: number
 

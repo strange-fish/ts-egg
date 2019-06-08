@@ -6,8 +6,10 @@ export default (app: Application) => {
   passport(app)
   const bearer = app.passport.authenticate('bearer', {
     session: false,
+    // @ts-ignore
     successReturnToOrRedirect: null
   })
+  // @ts-ignore
   // app.model.sync({ force: true })
 
   router.get('/', controller.home.index)
@@ -20,4 +22,5 @@ export default (app: Application) => {
   guardRouter.post('/v1/logout', controller.auth.logout)
   // article
   guardRouter.resources('article', '/v1/article', controller.article)
+  guardRouter.resources('comment', '/v1/comment', controller.comment)
 }
