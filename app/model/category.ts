@@ -10,9 +10,7 @@ import {
   AutoIncrement
 } from 'sequelize-typescript'
 
-@Table({
-  timestamps: true
-})
+@Table
 export default class Category extends Model<Category> {
   static app: Application
 
